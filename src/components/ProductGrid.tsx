@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Filter } from 'lucide-react';
@@ -10,36 +9,36 @@ interface ProductGridProps {
 
 const products: Product[] = [
   // Skincare Products
-  { id: 1, name: "Hydrating Vitamin C Serum", price: 2499, originalPrice: 3499, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "skincare", gender: "unisex", rating: 4.5, reviews: 256 },
-  { id: 2, name: "Anti-Aging Night Cream", price: 3999, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "skincare", gender: "women", rating: 4.8, reviews: 189 },
+  { id: 1, name: "Hydrating Vitamin C Serum", price: 2499, originalPrice: 3499, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=400", category: "skincare", gender: "unisex", rating: 4.5, reviews: 256 },
+  { id: 2, name: "Anti-Aging Night Cream", price: 3999, image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=400", category: "skincare", gender: "women", rating: 4.8, reviews: 189 },
   
   // Makeup Products
-  { id: 3, name: "Matte Liquid Lipstick Set", price: 1899, originalPrice: 2499, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "makeup", gender: "women", rating: 4.6, reviews: 342 },
-  { id: 4, name: "Foundation & Concealer Kit", price: 2799, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "makeup", gender: "women", rating: 4.7, reviews: 198 },
-  { id: 5, name: "Eyeshadow Palette - Sunset", price: 2199, originalPrice: 2999, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "makeup", gender: "women", rating: 4.9, reviews: 456 },
+  { id: 3, name: "Matte Liquid Lipstick Set", price: 1899, originalPrice: 2499, image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?q=80&w=400", category: "makeup", gender: "women", rating: 4.6, reviews: 342 },
+  { id: 4, name: "Foundation & Concealer Kit", price: 2799, image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=400", category: "makeup", gender: "women", rating: 4.7, reviews: 198 },
+  { id: 5, name: "Eyeshadow Palette - Sunset", price: 2199, originalPrice: 2999, image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=400", category: "makeup", gender: "women", rating: 4.9, reviews: 456 },
   
   // Haircare Products
-  { id: 6, name: "Argan Oil Hair Serum", price: 1599, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "haircare", gender: "unisex", rating: 4.4, reviews: 123 },
-  { id: 7, name: "Strengthening Shampoo", price: 899, originalPrice: 1299, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "haircare", gender: "unisex", rating: 4.3, reviews: 234 },
-  { id: 8, name: "Deep Conditioning Hair Mask", price: 1799, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "haircare", gender: "women", rating: 4.6, reviews: 167 },
+  { id: 6, name: "Argan Oil Hair Serum", price: 1599, image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=400", category: "haircare", gender: "unisex", rating: 4.4, reviews: 123 },
+  { id: 7, name: "Strengthening Shampoo", price: 899, originalPrice: 1299, image: "https://images.unsplash.com/photo-1594736797933-d0ef536ac249?q=80&w=400", category: "haircare", gender: "unisex", rating: 4.3, reviews: 234 },
+  { id: 8, name: "Deep Conditioning Hair Mask", price: 1799, image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=400", category: "haircare", gender: "women", rating: 4.6, reviews: 167 },
   
   // Men's Products
-  { id: 9, name: "Men's Beard Oil", price: 1299, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "skincare", gender: "men", rating: 4.5, reviews: 89 },
-  { id: 10, name: "Men's Face Wash", price: 799, originalPrice: 999, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "skincare", gender: "men", rating: 4.2, reviews: 156 },
-  { id: 11, name: "Men's Hair Styling Gel", price: 699, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "haircare", gender: "men", rating: 4.1, reviews: 78 },
+  { id: 9, name: "Men's Beard Oil", price: 1299, image: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=400", category: "skincare", gender: "men", rating: 4.5, reviews: 89 },
+  { id: 10, name: "Men's Face Wash", price: 799, originalPrice: 999, image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=400", category: "skincare", gender: "men", rating: 4.2, reviews: 156 },
+  { id: 11, name: "Men's Hair Styling Gel", price: 699, image: "https://images.unsplash.com/photo-1506629905427-4d04bce99a06?q=80&w=400", category: "haircare", gender: "men", rating: 4.1, reviews: 78 },
   
   // Fragrances
-  { id: 12, name: "Rose & Vanilla Perfume", price: 4499, originalPrice: 5999, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "fragrance", gender: "women", rating: 4.8, reviews: 267 },
-  { id: 13, name: "Men's Woody Cologne", price: 3999, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "fragrance", gender: "men", rating: 4.6, reviews: 134 },
+  { id: 12, name: "Rose & Vanilla Perfume", price: 4499, originalPrice: 5999, image: "https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=400", category: "fragrance", gender: "women", rating: 4.8, reviews: 267 },
+  { id: 13, name: "Men's Woody Cologne", price: 3999, image: "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=400", category: "fragrance", gender: "men", rating: 4.6, reviews: 134 },
   
   // Facial Products
-  { id: 14, name: "Charcoal Face Mask", price: 1299, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "facial", gender: "unisex", rating: 4.4, reviews: 298 },
-  { id: 15, name: "Hydrating Sheet Masks (5-Pack)", price: 999, originalPrice: 1499, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "facial", gender: "women", rating: 4.7, reviews: 445 },
+  { id: 14, name: "Charcoal Face Mask", price: 1299, image: "https://images.unsplash.com/photo-1570554886111-e80fcca6a029?q=80&w=400", category: "facial", gender: "unisex", rating: 4.4, reviews: 298 },
+  { id: 15, name: "Hydrating Sheet Masks (5-Pack)", price: 999, originalPrice: 1499, image: "https://images.unsplash.com/photo-1609825488888-3a766db05542?q=80&w=400", category: "facial", gender: "women", rating: 4.7, reviews: 445 },
   
   // Additional Products
-  { id: 16, name: "Vitamin E Body Lotion", price: 1099, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "skincare", gender: "unisex", rating: 4.3, reviews: 189 },
-  { id: 17, name: "Lip Balm Set - Natural", price: 599, originalPrice: 899, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "skincare", gender: "unisex", rating: 4.5, reviews: 123 },
-  { id: 18, name: "Makeup Brush Set Professional", price: 2999, image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400", category: "makeup", gender: "women", rating: 4.9, reviews: 356 },
+  { id: 16, name: "Vitamin E Body Lotion", price: 1099, image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=400", category: "skincare", gender: "unisex", rating: 4.3, reviews: 189 },
+  { id: 17, name: "Lip Balm Set - Natural", price: 599, originalPrice: 899, image: "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?q=80&w=400", category: "skincare", gender: "unisex", rating: 4.5, reviews: 123 },
+  { id: 18, name: "Makeup Brush Set Professional", price: 2999, image: "https://images.unsplash.com/photo-1457972866581-47b813d2773e?q=80&w=400", category: "makeup", gender: "women", rating: 4.9, reviews: 356 },
 ];
 
 const ProductGrid = ({ onAddToCart }: ProductGridProps) => {
